@@ -2,8 +2,8 @@
 
 [![Demo Status](https://img.shields.io/badge/demo-online-brightgreen?style=flat)](https://your-domain.com/product-catalog-manager)
 
-🔗 **Live Demo:** https://your-domain.com/product-catalog-manager  
-📂 **Source Code:** https://github.com/yourusername/product-catalog-manager
+🔗 **Live Demo:** https://product-catalog-manager-zzjw.onrender.com/  
+📂 **Source Code:** https://github.com/AdnanMGHaider/product-catalog-manager
 
 ---
 
