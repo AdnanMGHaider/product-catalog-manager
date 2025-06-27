@@ -6,10 +6,10 @@ COPY pom.xml .
 RUN mvn dependency:go-offline
 
 COPY src ./src
-RUN mvn package -DskipTests          # produces 21-bytecode
+RUN mvn package -DskipTests          
 
 # ---------- Stage 2: runtime ----------
-FROM eclipse-temurin:21-jre-alpine   # ← 21 instead of 17
+FROM eclipse-temurin:21-jre-alpine  
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 WORKDIR /app
