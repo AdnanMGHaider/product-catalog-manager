@@ -10,10 +10,6 @@ _.log
 .vscode/
 .idea/
 
-# Ignore Maven wrapper internals
-
-.mvn/
-
 # Git metadata
 
 .git
