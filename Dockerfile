@@ -1,5 +1,5 @@
 # Stage 1: build with Maven CLI
-FROM maven:3.9.4-eclipse-temurin-17 AS builder
+FROM maven:3.9.4-eclipse-temurin-21 AS builder
 WORKDIR /app
 
 # Copy only POM to leverage layer cache for dependencies
