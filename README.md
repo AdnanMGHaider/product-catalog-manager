@@ -33,15 +33,15 @@
 
 ### Landing Page
 
-![Landing Page](docs/screenshots/landing.png){ width=600px }
+![Landing Page](docs/screenshots/landing.png)
 
 ### Login Page
 
-![Login Page](docs/screenshots/login.png){ width=600px }
+![Login Page](docs/screenshots/login.png)
 
 ### Product List
 
-![Product List](docs/screenshots/products-list.png){ width=600px }
+![Product List](docs/screenshots/products-list.png)
 
 ---
 
