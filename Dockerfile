@@ -1,23 +1,27 @@
-# Dockerfile
-
-# 1. Use a lightweight Java 17 runtime
-FROM eclipse-temurin:17-jre-alpine
-
-# 2. Create a non-root user for security
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-USER appuser
-
-# 3. Set working directory
+# Stage 1: build with Maven
+FROM maven:3.9.4-eclipse-temurin-17 AS builder
 WORKDIR /app
 
-# 4. Copy the built JAR into the image
-#    - Assumes your Maven artifactId is "product-catalog-manager"
-#    - This wildcard picks up the versioned JAR (e.g. target/product-catalog-manager-0.0.1-SNAPSHOT.jar)
-ARG JAR_FILE=target/product-catalog-manager-*.jar
-COPY ${JAR_FILE} app.jar
+# Copy only Maven config first for better cache
+COPY pom.xml .
+COPY mvnw .
+COPY .mvn .mvn
 
-# 5. Expose the port your app listens on
+# Download dependencies
+RUN ./mvnw dependency:go-offline
+
+# Copy source and build
+COPY src ./src
+RUN ./mvnw package -DskipTests
+
+# Stage 2: runtime image
+FROM eclipse-temurin:17-jre-alpine
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
+WORKDIR /app
+
+# Copy the fat JAR from the builder stage
+COPY --from=builder /app/target/product-catalog-manager-*.jar app.jar
+
 EXPOSE 8080
-
-# 6. Run the JAR
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
