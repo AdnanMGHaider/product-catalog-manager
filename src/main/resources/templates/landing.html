@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inventory Dashboard Demo</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+  </head>
+  <body>
+    <div style="max-width: 600px; margin: 2rem auto; text-align: center">
+      <h1>Inventory Dashboard Demo</h1>
+      <h3>A Spring Boot app demonstrating:</h3>
+      <ul style="text-align: left; display: inline-block">
+        <li>Role-based access (ADMIN vs SALES)</li>
+        <li>Add, edit & delete products</li>
+        <li>Filter by brand & quantity</li>
+        <li>In-memory H2 database for quick demo</li>
+      </ul>
+
+      <h3 style="margin-top: 2rem">Demo Credentials</h3>
+      <table border="1" cellpadding="6" style="margin: 0 auto">
+        <tr>
+          <th>Role</th>
+          <th>User</th>
+          <th>Pass</th>
+        </tr>
+        <tr>
+          <td>ADMIN</td>
+          <td>UserA</td>
+          <td>aaaa</td>
+        </tr>
+        <tr>
+          <td>SALES</td>
+          <td>UserB</td>
+          <td>bbbb</td>
+        </tr>
+        <tr>
+          <td>ADMIN+SALES</td>
+          <td>UserC</td>
+          <td>cccc</td>
+        </tr>
+      </table>
+
+      <p style="margin-top: 1.5rem">
+        <a th:href="@{/login}">
+          <button style="padding: 0.6rem 1.2rem; font-size: 1rem">
+            Enter App →
+          </button>
+        </a>
+      </p>
+    </div>
+    <footer style="text-align: center; margin-top: 2rem; color: #888">
+      Developed by Adnan Haider
+    </footer>
+  </body>
+</html>

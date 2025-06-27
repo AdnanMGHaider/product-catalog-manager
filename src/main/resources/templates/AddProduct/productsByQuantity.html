@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Products by Quantity</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Search Products by Quantity Threshold</h1>
+        <form th:action="@{/productsByQuantity}" th:object="${product}" method="post">
+            <div class="form-group">
+                <label>Quantity Threshold:</label>
+                <input type="number" th:field="*{quantityInHand}" required />
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="action-button">Search</button>
+                <a th:href="@{/index}" class="home-button">Cancel</a>
+            </div>
+        </form>
+        <div th:if="${products != null}">
+            <h2>Search Results:</h2>
+            <table>
+                <tr>
+                    <th>Product Code</th>
+                    <th>Product Brand</th>
+                    <th>Quantity In Hand</th>
+                    <th>Unit Price</th>
+                </tr>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.productCode}"></td>
+                    <td th:text="${product.productBrand}"></td>
+                    <td th:text="${product.quantityInHand}"></td>
+                    <td th:text="${product.unitPrice}"></td>
+                </tr>
+            </table>
+        </div>
+        <a th:href="@{/index}" class="home-button">Home</a>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

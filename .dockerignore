@@ -1,0 +1,25 @@
+# Ignore build output
+
+target/
+
+# Ignore local IDE & OS files
+
+_.iml
+_.log
+\*.tmp
+.vscode/
+.idea/
+
+# Ignore Maven wrapper internals
+
+.mvn/
+
+# Git metadata
+
+.git
+.gitignore
+
+# Docs & configs you don’t need in the image
+
+README.md
+HELP.md

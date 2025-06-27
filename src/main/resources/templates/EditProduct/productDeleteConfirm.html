@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Deleted</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${message}">Product Deleted Successfully!</h1>
+        <p><a th:href="@{/editableListOfProducts}" class="home-button">Back to Product List</a></p>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

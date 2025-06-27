@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editable Product List</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Editable Product List</h1>
+        <table>
+            <tr>
+                <th>Product Code</th>
+                <th>Product Brand</th>
+                <th>Quantity In Hand</th>
+                <th>Unit Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.productCode}"></td>
+                <td th:text="${product.productBrand}"></td>
+                <td th:text="${product.quantityInHand}"></td>
+                <td th:text="${product.unitPrice}"></td>
+                <td><a th:href="@{/editProduct/{id}(id=${product.id})}">Edit</a></td>
+                <td><a th:href="@{/deleteProduct/{id}(id=${product.id})}" 
+                       onclick="return confirm('Are you sure you want to delete this product?');">Delete</a></td>
+            </tr>
+        </table>
+        <div class="form-actions">
+            <a th:href="@{/productDataInput}" class="action-button">Add Another Product</a>
+            <a th:href="@{/index}" class="home-button">Home</a>
+        </div>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

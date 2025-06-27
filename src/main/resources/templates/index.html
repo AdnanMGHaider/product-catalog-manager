@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <title>Home Page</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Product Catalog Management</h1>
+      <div class="button-group">
+        <!-- ADMIN and Combined Users -->
+        <div sec:authorize="hasAuthority('ADMIN')">
+          <a th:href="@{/productDataInput}" class="action-button"
+            >Add a Product</a
+          >
+          <a th:href="@{/editableListOfProducts}" class="action-button"
+            >Edit/Delete Products</a
+          >
+        </div>
+
+        <!-- SALES and Combined Users -->
+        <div sec:authorize="hasAuthority('SALES')">
+          <a th:href="@{/listOfProducts}" class="action-button"
+            >List All Products</a
+          >
+          <a th:href="@{/productsByBrand}" class="action-button"
+            >List Products by Brand</a
+          >
+          <a th:href="@{/productsByQuantity}" class="action-button"
+            >List Products by Quantity Threshold</a
+          >
+        </div>
+      </div>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+  </body>
+</html>
